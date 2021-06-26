@@ -1,23 +1,18 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import { useEffect, useState } from "react";
+import Login from "./login";
+import List from "./userList";
 
 function App() {
+  const [loading, setLoading] = useState(false);
+  const [user, setUser] = useState({ username: "", email: "", password: "" });
+  const [userList, setUserList] = useState([]);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="main">
+      <Login />
+
+      {loading ? <List /> : <h2>Loading...</h2>}
     </div>
   );
 }
